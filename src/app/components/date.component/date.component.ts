@@ -9,7 +9,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
       transition("* => *", [style({opacity: 0}), animate("2000ms")])
    ])
   ],
-  styleUrls: ['./date.component.css']
+  styleUrls: ['./date.component.scss']
 })
 export class DateComponent implements OnInit {
   public hours: number;
