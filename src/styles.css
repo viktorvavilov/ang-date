@@ -54,3 +54,8 @@ table {
 	color: white !important;
 	border-color: transparent !important;
 }
+
+.ui-inputtext:hover {
+	background-color: #00000050 !important;
+	cursor: pointer;
+}
