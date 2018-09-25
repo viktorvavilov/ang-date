@@ -1,26 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { DateComponent } from './date/date.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/calendar';
+import { AppComponent } from './components/app.component/app.component';
+import { DateComponent } from './components/date.component/date.component';
 import { FormsModule } from '@angular/forms';
-import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
+import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     DateComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     CalendarModule,
     FormsModule,
     AccordionModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],
