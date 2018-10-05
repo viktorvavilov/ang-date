@@ -37,15 +37,14 @@ export class ListComponent implements OnInit {
 
   public getFromStore() {
     let dateList = JSON.parse(localStorage.getItem("lastDate"));
-
     if (!dateList) {
-      console.log("=== Storage is empty ===");
+      // console.log("=== Storage is empty ===");
     } else {
-      console.log("=== Get from storage ===");
+      // console.log("=== Get from storage ===");
+      dateList.forEach(element => {
+        this.dates.push({date: element});
+      });
     }
-    dateList.forEach(element => {
-      this.dates.push({date: element});
-    });
 
   }
 
@@ -54,7 +53,7 @@ export class ListComponent implements OnInit {
   }
 
   public onChooseDate(date: any) {
-    console.log("New date is " + date);
+    // console.log("New date is " + date);
     this.setFromStore(date);
     this.animate();
   }

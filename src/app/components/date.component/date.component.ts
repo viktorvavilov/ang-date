@@ -28,6 +28,7 @@ export class DateComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    console.log("Angular Date Application 0.1")
     let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;
@@ -53,13 +54,13 @@ export class DateComponent implements OnInit {
     this.newDate = event;
     setInterval(() => {
       this.calculate(this.newDate);
-      localStorage.removeItem("data")
-      localStorage.setItem("data", this.newDate)
     }, 1000);
+    localStorage.removeItem("data")
+    localStorage.setItem("data", this.newDate)
   }
 
   public setToStore() {
-    console.log("=== Added to storage ===");
+    // console.log("=== Added to storage ===");
     this.dateList.push(this.newDate);
     localStorage.setItem("lastDate", JSON.stringify(this.dateList));
   }
@@ -68,14 +69,14 @@ export class DateComponent implements OnInit {
     this.dateList = JSON.parse(localStorage.getItem("lastDate"));
 
     if (!this.dateList) {
-      console.log("=== Storage is empty ===");
+      // console.log("=== Storage is empty ===");
     } else {
-      console.log("=== Get from storage ===");
+      // console.log("=== Get from storage ===");
     }
   }
 
   public clearStore() {
-    console.log("=== Storage is clear ===");
+    // console.log("=== Storage is clear ===");
     localStorage.removeItem("lastDate");
   }
 }
