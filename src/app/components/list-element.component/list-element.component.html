@@ -1,3 +1,5 @@
 <div class="app-list-element" (click)="onChooseDate()">
-  <span>{{dateItem.date}}</span>
+  <span>{{dateItem.date | date:'fullDate'}}</span>
+  <br>
+  <span>{{dateItem.date | date:'fullTime'}}</span>
 </div>

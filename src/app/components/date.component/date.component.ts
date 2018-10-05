@@ -53,9 +53,9 @@ export class DateComponent implements OnInit {
     this.newDate = event;
     setInterval(() => {
       this.calculate(this.newDate);
+      localStorage.removeItem("data")
+      localStorage.setItem("data", this.newDate)
     }, 1000);
-    localStorage.removeItem("data")
-    localStorage.setItem("data", this.newDate)
   }
 
   public setToStore() {
@@ -71,7 +71,6 @@ export class DateComponent implements OnInit {
       console.log("=== Storage is empty ===");
     } else {
       console.log("=== Get from storage ===");
-      console.log(this.dateList);
     }
   }
 

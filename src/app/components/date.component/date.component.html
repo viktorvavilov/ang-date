@@ -24,10 +24,9 @@
   <!-- <button (click)="setToStore()">Set</button>
   <button (click)="getFromStore()">Get</button>
   <button (click)="clearStore()">Clear</button> -->
+  <button class="bottom__button" (click)="setToStore()">Remember current date</button>
   <div class="bottom__text">
-    <span>{{newDate}}</span>
-  </div>
-  <div>
-    <div *ngFor="let date of dateList">{{newDate}}</div>
+    <span>{{newDate | date:'fullDate'}} </span>
+    <span>{{newDate | date:'shortTime'}}</span>
   </div>
 </div>
