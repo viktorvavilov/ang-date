@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './components/app.component/app.component';
 import { DateComponent } from './components/date.component/date.component';
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListElementComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     CalendarModule,
     FormsModule,
