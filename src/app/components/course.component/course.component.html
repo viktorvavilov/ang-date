@@ -1,0 +1,16 @@
+<div class="course">
+  <div class="course__left-side">
+    <div class="left-side">
+      <span class="left-side__title">{{courseItem.title}}</span>
+      <div class="toLeft">
+        <span class="left-side__text">{{courseItem.duration}} min</span>
+        <span class="left-side__text">{{courseItem.date}}</span>
+      </div>
+    </div>
+    <div class="course__description">{{courseItem.description}}</div>
+  </div>
+  <div class="course__right-side">
+    <button class="right-side__button">Edit couse</button>
+    <button class="right-side__button" (click)="onDeleteCourse()">Delete course</button>
+  </div>
+</div>
