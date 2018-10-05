@@ -28,7 +28,7 @@ export class DateComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log("Angular Date Application 0.1")
+    console.log("Angular Date Application 0.1.1")
     let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;

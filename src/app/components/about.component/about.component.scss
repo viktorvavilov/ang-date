@@ -1,0 +1,19 @@
+.app-about {
+  padding-top: 60px;
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__text{
+    font-size: 24px;
+  }
+
+  &__name {
+    font-size: 20px;
+  }
+}

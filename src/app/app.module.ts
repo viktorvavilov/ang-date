@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './components/app.component/app.component';
 import { DateComponent } from './components/date.component/date.component';
 import { HeaderComponent } from './components/header.component/header.component';
+import { AboutComponent } from './components/about.component/about.component';
 import { ListComponent } from './components/list.component/list.component';
 import { ListElementComponent } from './components/list-element.component/list-element.component';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     DateComponent,
     HeaderComponent,
+    AboutComponent,
     ListComponent,
     ListElementComponent
   ],

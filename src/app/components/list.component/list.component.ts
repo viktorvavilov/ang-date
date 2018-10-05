@@ -5,15 +5,15 @@ import { trigger, style, animate, transition, state } from '@angular/animations'
   selector: 'app-list',
   templateUrl: './list.component.html',
   animations: [
-   trigger('messageAnimation', [
-    state('hidden', style({
-      opacity: 0,
-    })),
-    state('shown', style({
-      opacity: 1,
-    })),
-    transition('hidden => shown', animate('500ms ease-in')),
-]),
+    trigger('messageAnimation', [
+      state('hidden', style({
+        opacity: 0,
+      })),
+      state('shown', style({
+        opacity: 1,
+      })),
+      transition('hidden => shown', animate('500ms ease-in')),
+    ]),
   ],
   styleUrls: ['./list.component.scss']
 })
