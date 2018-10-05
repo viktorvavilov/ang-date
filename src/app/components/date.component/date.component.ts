@@ -23,11 +23,12 @@ export class DateComponent implements OnInit {
   };
 
   public newDate;
+  public dateList = [];
 
   constructor() {}
 
   ngOnInit() {
-    var getDate = localStorage.getItem("data");
+    let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;
       this.valueChange(this.newDate);
@@ -53,13 +54,35 @@ export class DateComponent implements OnInit {
     setInterval(() => {
       this.calculate(this.newDate);
     }, 1000);
-    localStorage.clear();
+    localStorage.removeItem("data")
     localStorage.setItem("data", this.newDate)
+  }
+
+  public setToStore() {
+    console.log("=== Added to storage ===");
+    this.dateList.push(this.newDate);
+    localStorage.setItem("lastDate", JSON.stringify(this.dateList));
+  }
+
+  public getFromStore() {
+    this.dateList = JSON.parse(localStorage.getItem("lastDate"));
+
+    if (!this.dateList) {
+      console.log("=== Storage is empty ===");
+    } else {
+      console.log("=== Get from storage ===");
+      console.log(this.dateList);
+    }
+  }
+
+  public clearStore() {
+    console.log("=== Storage is clear ===");
+    localStorage.removeItem("lastDate");
   }
 }
 
 interface IDate {
-  hours: number,
-  minutes: number,
-  seconds: number
+  hours: number;
+  minutes: number;
+  seconds: number;
 }

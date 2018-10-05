@@ -2,25 +2,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './components/app.component/app.component';
+import { DateComponent } from './components/date.component/date.component';
 import { HeaderComponent } from './components/header.component/header.component';
-import { FooterComponent } from './components/footer.component/footer.component';
-import { LogoComponent } from './components/logo.component/logo.component';
-import { CoursesComponent } from './components/courses.component/courses.component';
-import { CourseComponent } from './components/course.component/course.component';
-import { ToolboxComponent } from './components/toolbox.component/toolbox.component';
+import { ListComponent } from './components/list.component/list.component';
+import { ListElementComponent } from './components/list-element.component/list-element.component';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
+import { AccordionModule } from 'primeng/accordion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DateComponent,
     HeaderComponent,
-    FooterComponent,
-    LogoComponent,
-    CoursesComponent,
-    CourseComponent,
-    ToolboxComponent
+    ListComponent,
+    ListElementComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CalendarModule,
+    FormsModule,
+    AccordionModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

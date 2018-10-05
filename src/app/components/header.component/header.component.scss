@@ -1,13 +1,23 @@
 .app-header {
-  padding: 0 15px;
   width: 100%;
-  height: 50px;
-  color: white;
-  background-color: rgb(39, 39, 39);
+  height: 42px;
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
-  z-index: 300;
-  top: 0;
+  z-index: 200;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+
+  &__route {
+    line-height: 32px;
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: white;
+    background: #00000050;
+    &:hover {
+      background: #00000035;
+      cursor: pointer;
+    }
+  }
 }
