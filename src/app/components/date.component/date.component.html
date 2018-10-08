@@ -21,12 +21,10 @@
   </div>
 </div>
 <div class="bottom">
-  <!-- <button (click)="setToStore()">Set</button>
-  <button (click)="getFromStore()">Get</button>
-  <button (click)="clearStore()">Clear</button> -->
   <button class="bottom__button" (click)="setToStore()">Remember current date</button>
   <div class="bottom__text">
     <span>{{newDate | date:'fullDate'}} </span>
     <span>{{newDate | date:'shortTime'}}</span>
   </div>
+  <button class="bottom__button" (click)="clearStore()">Clear all dates</button>
 </div>

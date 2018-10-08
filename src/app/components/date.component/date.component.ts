@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { CalculateService } from '../../services/calculate.service';
-import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-date',
@@ -22,14 +21,15 @@ export class DateComponent implements OnInit {
     seconds: 0
   };
 
+  public test;
+
   public newDate;
   public dateList = [];
 
-  constructor(private calculateService: CalculateService, StoreService: StoreService) {}
+  constructor(private calculateService: CalculateService) {}
 
   ngOnInit() {
-    console.log("Angular Date Application 0.1.3")
-    this.getFromStore();
+    console.log("Angular Date Application 0.1.3 revert")
     let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;
@@ -37,10 +37,29 @@ export class DateComponent implements OnInit {
     }
   }
 
+  calculate(date) {
+    let timeStart = new Date().getTime();
+    let timeEnd = new Date(date).getTime();
+    let hourDiff = timeEnd - timeStart;
+    let minDiff = hourDiff / 60 / 1000;
+    let secDiff = hourDiff / 1000;
+    let hDiff = hourDiff / 3600 / 1000;
+    let days = hDiff / 24;
+
+    this.date.days = Math.floor(days);
+    if (this.date.days > 0) {
+      this.date.hours = Math.floor(hDiff - (this.date.days * 24));
+    } else {
+    this.date.hours = Math.floor(hDiff);
+    }
+    this.date.minutes = Math.floor(minDiff - 60 * Math.floor(hDiff));
+    this.date.seconds = Math.floor(secDiff % 60);
+  }
+
   public valueChange (event) {
     this.newDate = event;
     setInterval(() => {
-      this.date =this.calculateService.calculate(this.newDate);
+      this.calculate(this.newDate);
     }, 1000);
     localStorage.removeItem("data")
     localStorage.setItem("data", this.newDate)
