@@ -3,11 +3,11 @@
   <p-calendar [showTime]="true" [(ngModel)]="model" (ngModelChange)="valueChange($event)" ></p-calendar>
 </div>
 <div class="date">
-  <!-- <div class="date__element">
-    <div class="element__time">{{day}}</div>
+  <div class="date__element" *ngIf='date.days > 0'>
+    <div class="element__time">{{date.days}}</div>
     <div class="element__title">Days</div>
-  </div> -->
-  <div class="date__element">
+  </div>
+  <div class="date__element" *ngIf='date.hours > 0'>
     <div class="element__time">{{date.hours}}</div>
     <div class="element__title">Hours</div>
   </div>

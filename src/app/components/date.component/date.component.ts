@@ -12,11 +12,12 @@ import { trigger, style, animate, transition } from '@angular/animations';
   styleUrls: ['./date.component.scss']
 })
 export class DateComponent implements OnInit {
-  public hours: number;
-  public minutes: number;
-  public seconds: number;
+  // public hours: number;
+  // public minutes: number;
+  // public seconds: number;
 
   public date: IDate  = {
+    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
@@ -43,11 +44,17 @@ export class DateComponent implements OnInit {
     let minDiff = hourDiff / 60 / 1000;
     let secDiff = hourDiff / 1000;
     let hDiff = hourDiff / 3600 / 1000;
-    let day = hDiff / 24;
+    let days = hDiff / 24;
 
+    this.date.days = Math.floor(days);
+    if (this.date.days > 0) {
+      this.date.hours = Math.floor(hDiff - (this.date.days * 24));
+    } else {
     this.date.hours = Math.floor(hDiff);
-    this.date.minutes = Math.floor(minDiff - 60 * this.date.hours);
+    }
+    this.date.minutes = Math.floor(minDiff - 60 * Math.floor(hDiff));
     this.date.seconds = Math.floor(secDiff % 60);
+    console.log(Math.floor(days))
   }
 
   public valueChange (event) {
@@ -82,6 +89,7 @@ export class DateComponent implements OnInit {
 }
 
 interface IDate {
+  days: number;
   hours: number;
   minutes: number;
   seconds: number;
