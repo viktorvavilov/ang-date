@@ -35,6 +35,7 @@ export class DateComponent implements OnInit {
       this.newDate = getDate;
       this.valueChange(this.newDate);
     }
+    this.getFromStore()
   }
 
   calculate(date) {
@@ -72,9 +73,13 @@ export class DateComponent implements OnInit {
 
   public getFromStore() {
     this.dateList = JSON.parse(localStorage.getItem("lastDate"));
+    if (!this.dateList) {
+      this.dateList = [];
+    }
   }
 
   public clearStore() {
+    this.dateList = [];
     localStorage.removeItem("lastDate");
   }
 }
