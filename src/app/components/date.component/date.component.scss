@@ -76,6 +76,15 @@
   }
 }
 
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: #00000063;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+}
+
 .popup {
   position: absolute;
   z-index: 400;
@@ -103,6 +112,8 @@
   &__bottom {
     margin-top: 10px;
     display: flex;
+    justify-content: space-around;
+    width: 100%;
   }
   &__button {
     line-height: 48px;
@@ -110,7 +121,7 @@
     padding: 0 10px;
     border-radius: 8px;
     color: white;
-    background: #0000008a;
+    background: #ffffff24;
     font-size: 18px;
     border: 0;
     margin: 0 10px;
