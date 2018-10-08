@@ -8,7 +8,12 @@ export class StoreService {
   constructor() { }
 
   public getLastFromStore() {
-    return JSON.parse(localStorage.getItem("lastDate"));
+    let lastDates = JSON.parse(localStorage.getItem("lastDate"));
+    if (!lastDates) {
+      return [];
+    } else {
+      return lastDates;
+    }
   }
 
   public setToStore(date: any): void {

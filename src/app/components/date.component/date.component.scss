@@ -75,3 +75,48 @@
     line-height: 54px;
   }
 }
+
+.popup {
+  position: absolute;
+  z-index: 400;
+  width: 90%;
+  max-width: 250px;
+  background: #0000009c;
+  border-radius: 8px;
+  padding: 0 10px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+  top: 30%;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+
+  &__text {
+  }
+  &__bottom {
+    margin-top: 10px;
+    display: flex;
+  }
+  &__button {
+    line-height: 48px;
+    height: 48px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: white;
+    background: #0000008a;
+    font-size: 18px;
+    border: 0;
+    margin: 0 10px;
+    &:hover {
+      background: #00000035;
+      cursor: pointer;
+    }
+  }
+}

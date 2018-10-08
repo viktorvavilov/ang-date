@@ -26,5 +26,13 @@
     <span>{{newDate | date:'fullDate'}} </span>
     <span>{{newDate | date:'shortTime'}}</span>
   </div>
-  <button class="bottom__button" (click)="clearStore()">Clear all dates</button>
+  <button class="bottom__button" (click)="openPopup()">Clear all dates</button>
+</div>
+
+<div class="popup" *ngIf='popupShown'>
+  <span class="popup__text">Do you really want to delete all dates?</span>
+  <div class="popup__bottom">
+    <div class="popup__button" (click)="clearStore()">Yes</div>
+    <div class="popup__button" (click)="closePopup()">No</div>
+  </div>
 </div>

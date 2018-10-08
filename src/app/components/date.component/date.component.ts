@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { CalculateService } from '../../services/calculate.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-date',
@@ -12,8 +13,10 @@ import { CalculateService } from '../../services/calculate.service';
   ],
   styleUrls: ['./date.component.scss']
 })
-export class DateComponent implements OnInit {
 
+export class DateComponent implements OnInit {
+  public popupShown: boolean = false;
+  public model;
   public date: IDate  = {
     days: 0,
     hours: 0,
@@ -26,10 +29,9 @@ export class DateComponent implements OnInit {
   public newDate;
   public dateList = [];
 
-  constructor(private calculateService: CalculateService) {}
+  constructor(private calculateService: CalculateService, private storeService: StoreService) {}
 
   ngOnInit() {
-    console.log("Angular Date Application 0.1.3 revert")
     let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;
@@ -72,15 +74,20 @@ export class DateComponent implements OnInit {
   }
 
   public getFromStore() {
-    this.dateList = JSON.parse(localStorage.getItem("lastDate"));
-    if (!this.dateList) {
-      this.dateList = [];
-    }
+    this.dateList = this.storeService.getLastFromStore();
+  }
+
+  public openPopup() {
+    this.popupShown = true;
+  }
+  public closePopup() {
+    this.popupShown = false;
   }
 
   public clearStore() {
     this.dateList = [];
     localStorage.removeItem("lastDate");
+    this.popupShown = false;
   }
 }
 
