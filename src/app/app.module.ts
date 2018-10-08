@@ -13,6 +13,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { AccordionModule } from 'primeng/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { StoreService } from './services/store.service';
+import { CalculateService } from './services/calculate.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
 
   ],
-  providers: [],
+  providers: [
+    StoreService,
+    CalculateService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
