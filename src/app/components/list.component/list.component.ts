@@ -44,7 +44,14 @@ export class ListComponent implements OnInit {
         this.dates.push({date: element});
       });
     }
+  }
 
+  public deleteDateElement(date: any) {
+    for(var i = 0; i < this.dates.length; i += 1) {
+      if(this.dates[i]['date'] === date) {
+          console.log(i);
+      }
+    }
   }
 
   public onChooseDate(date: any) {

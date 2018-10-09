@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, style, animate, transition } from '@angular/animations';
+import { trigger, style, animate, transition, state } from '@angular/animations';
 import { CalculateService } from '../../services/calculate.service';
 import { StoreService } from '../../services/store.service';
 
@@ -7,9 +7,15 @@ import { StoreService } from '../../services/store.service';
   selector: 'app-date',
   templateUrl: './date.component.html',
   animations: [
-    trigger('minutes', [
-      transition("* => *", [style({opacity: 0}), animate("2000ms")])
-   ])
+    trigger('messageAnimation', [
+      state('hidden', style({
+        opacity: 0,
+      })),
+      state('shown', style({
+        opacity: 1,
+      })),
+      transition('hidden => shown', animate('500ms ease-in')),
+    ]),
   ],
   styleUrls: ['./date.component.scss']
 })
@@ -28,6 +34,7 @@ export class DateComponent implements OnInit {
 
   public newDate;
   public dateList = [];
+  public state: string = 'hidden';
 
   constructor(private calculateService: CalculateService, private storeService: StoreService) {}
 
@@ -70,6 +77,7 @@ export class DateComponent implements OnInit {
   }
 
   public setToStore() {
+    this.animate();
     this.dateList.push(this.newDate);
     localStorage.setItem("lastDate", JSON.stringify(this.dateList));
   }
@@ -89,6 +97,13 @@ export class DateComponent implements OnInit {
     this.dateList = [];
     localStorage.removeItem("lastDate");
     this.popupShown = false;
+  }
+
+  private animate() {
+    this.state = (this.state === 'hidden' ? 'shown' : 'hidden');
+    setTimeout(() => {
+      this.state = 'hidden';
+    }, 2000);
   }
 }
 

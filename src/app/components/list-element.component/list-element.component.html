@@ -1,5 +1,8 @@
-<div class="app-list-element" (click)="onChooseDate()">
-  <span>{{dateItem.date | date:'fullDate'}}</span>
-  <br>
-  <span>{{dateItem.date | date:'fullTime'}}</span>
+<div class="app-list-element" style="display:flex" (click)="onChooseDate()">
+  <div >
+    <span>{{dateItem.date | date:'fullDate'}}</span>
+    <br>
+    <span>{{dateItem.date | date:'fullTime'}}</span>
+  </div>
+  <!-- <div (click)="onCloseDate()" style="font-size: 24px;margin-left: 15px;">X</div> -->
 </div>

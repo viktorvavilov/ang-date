@@ -29,6 +29,10 @@
   <button class="bottom__button" (click)="openPopup()">Clear all dates</button>
 </div>
 
+<div class="message" [@messageAnimation]='state'>
+  <span>Date added to list.</span>
+</div>
+
 <div class="popup" *ngIf='popupShown'>
   <span class="popup__text">Do you really want to delete all dates?</span>
   <div class="popup__bottom">
@@ -36,4 +40,3 @@
     <div class="popup__button" (click)="closePopup()">No</div>
   </div>
 </div>
-<div class="overlay" *ngIf='popupShown'></div>

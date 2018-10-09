@@ -76,23 +76,10 @@
   }
 }
 
-.overlay {
-  height: 100%;
-  width: 100%;
-  background-color: #00000063;
-  position: fixed;
-  z-index: 200;
-  top: 0;
-}
-
 .popup {
   position: absolute;
   z-index: 400;
-  width: 90%;
-  max-width: 250px;
   background: #0000009c;
-  border-radius: 8px;
-  padding: 0 10px;
   color: white;
   font-size: 18px;
   text-align: center;
@@ -100,22 +87,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 128px;
-  top: 30%;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-  &__text {
-  }
   &__bottom {
     margin-top: 10px;
     display: flex;
     justify-content: space-around;
     width: 100%;
   }
+
   &__button {
+    width: 64px;
     line-height: 48px;
     height: 48px;
     padding: 0 10px;
@@ -126,8 +111,23 @@
     border: 0;
     margin: 0 10px;
     &:hover {
-      background: #00000035;
+      background: #ffffff1a;
       cursor: pointer;
     }
   }
+}
+
+.message {
+  color: white;
+  background: #00000075;
+  transition: 500ms;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }

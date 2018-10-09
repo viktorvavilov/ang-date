@@ -1,6 +1,6 @@
 <div class="app-list">
   <span class="app-list__title">Your last dates:</span>
-  <app-list-element *ngFor='let date of dates' [dateItem]="date" (chooseDate)="onChooseDate($event)"></app-list-element>
+  <app-list-element *ngFor='let date of dates' [dateItem]="date" (chooseDate)="onChooseDate($event)" (closeDate)="deleteDateElement($event)"></app-list-element>
 </div>
 <div class="message" [@messageAnimation]='state'>
   <span>Date was changed.</span>
