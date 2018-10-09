@@ -35,6 +35,7 @@ export class DateComponent implements OnInit {
     let getDate = localStorage.getItem("data");
     if (getDate) {
       this.newDate = getDate;
+      this.calculate(this.newDate);
       this.valueChange(this.newDate);
     }
     this.getFromStore()

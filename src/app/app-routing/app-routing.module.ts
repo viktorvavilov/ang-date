@@ -3,8 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DateComponent } from '../components/date.component/date.component'
 import { ListComponent } from '../components/list.component/list.component'
 import { AboutComponent } from '../components/about.component/about.component'
+import { ErrorPageComponent } from '../components/error.component/error.component'
 
 const routes: Routes = [
+  {
+    path: '',
+    component: DateComponent,
+    pathMatch: 'full'
+  },
   {
     path: 'dates',
     component: ListComponent,
@@ -14,9 +20,9 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-      path: '',
-      component: DateComponent,
-  },
+    path: '**',
+    component: ErrorPageComponent
+  }
 ];
 
 @NgModule({
