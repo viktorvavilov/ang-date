@@ -77,7 +77,7 @@
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   z-index: 400;
   background: #0000009c;
   color: white;
@@ -91,6 +91,11 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  &__{
+    font-size: 18px;
+    padding: 0 20px;
+  }
 
   &__bottom {
     margin-top: 10px;

@@ -9,6 +9,13 @@
   justify-content: center;
   align-items: center;
 
+  &__code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__text{
     font-size: 24px;
   }
@@ -16,4 +23,40 @@
   &__name {
     font-size: 20px;
   }
+
+  &__input {
+    line-height: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: white;
+    background: #00000050;
+    border: 0;
+    font-size: 20px;
+    width: 128px;
+    margin: 10px;
+    text-align: center;
+  }
+  &__button {
+    line-height: 48px;
+    height: 48px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: white;
+    background: #00000050;
+    font-size: 18px;
+    border: 0;
+    &:hover {
+      background: #00000035;
+      cursor: pointer;
+    }
+  }
+}
+
+.dev {
+  padding-top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

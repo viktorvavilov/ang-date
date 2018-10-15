@@ -30,7 +30,12 @@ export class DateComponent implements OnInit {
     seconds: 0
   };
 
-  public test;
+  public dateNull: IDate  = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  };
 
   public newDate;
   public dateList = [];
@@ -65,6 +70,16 @@ export class DateComponent implements OnInit {
     }
     this.date.minutes = Math.floor(minDiff - 60 * Math.floor(hDiff));
     this.date.seconds = Math.floor(secDiff % 60);
+
+    if (this.date.seconds < 0) {
+      this.date.days = this.dateNull.days;
+      this.date.hours = this.dateNull.hours;
+      this.date.minutes = this.dateNull.minutes;
+      this.date.seconds = this.dateNull.seconds;
+      return;
+    } else {
+      
+    }
   }
 
   public valueChange (event) {
@@ -72,8 +87,8 @@ export class DateComponent implements OnInit {
     setInterval(() => {
       this.calculate(this.newDate);
     }, 1000);
-    localStorage.removeItem("data")
-    localStorage.setItem("data", this.newDate)
+    localStorage.removeItem("data");
+    localStorage.setItem("data", this.newDate);
   }
 
   public setToStore() {

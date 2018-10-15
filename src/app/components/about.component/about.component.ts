@@ -31,6 +31,8 @@ export class AboutComponent implements OnInit {
   stateText: string = 'hidden';
   stateName: string = 'hidden';
 
+  public devEnable = false;
+
   constructor() {}
 
   ngOnInit() {
@@ -44,5 +46,26 @@ export class AboutComponent implements OnInit {
     setTimeout(() => {
       this.stateName = (this.stateName === 'hidden' ? 'shown' : 'hidden');
     }, 1500);
+  }
+
+  public toggleDev(password) {
+    let hash = this.hashIt(password)
+    if (hash === 1481632) {
+      this.devEnable = !this.devEnable;
+    }
+  }
+
+  public backFromDev() {
+    this.devEnable = false;
+  }
+
+  private hashIt(str) {
+    return str.split('').reduce((prevHash, currVal) =>
+      (((prevHash << 5) - prevHash) + currVal.charCodeAt(0))|0, 0);
+  }
+
+  public clearAllFromStorrage() {
+    localStorage.removeItem("data");
+    localStorage.removeItem("lastDate");
   }
 }
