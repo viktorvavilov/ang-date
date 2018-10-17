@@ -13,7 +13,7 @@
     <li>0.1.0: Hello world!</li>
   </ul>
 
-  <div class="app-about__code">
+  <div class="app-about__code" *ngIf="popupShown">
     <span class="app-about__text">Development Only</span>
     <input class="app-about__input" type="text" placeholder="Password" name="password" [(ngModel)]="password">
     <button class="app-about__button" (click)="toggleDev(password)">Submit</button>
@@ -26,3 +26,9 @@
   <br>
   <button class="app-about__button" (click)="clearAllFromStorrage()">Clear all from storage</button>
 </div>
+
+<div (click)="togglePopup()" style="    position: fixed;
+background-color: transparent;
+width: 100%;
+height: 10%;
+bottom: 0;"></div>

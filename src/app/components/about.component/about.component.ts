@@ -32,6 +32,7 @@ export class AboutComponent implements OnInit {
   stateName: string = 'hidden';
 
   public devEnable = false;
+  public popupShown = false;
 
   constructor() {}
 
@@ -52,6 +53,14 @@ export class AboutComponent implements OnInit {
     let hash = this.hashIt(password)
     if (hash === 1481632) {
       this.devEnable = !this.devEnable;
+    }
+  }
+
+  public togglePopup() {
+    if (this.popupShown) {
+      this.popupShown = false;
+    } else {
+      this.popupShown = true;
     }
   }
 
