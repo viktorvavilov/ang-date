@@ -21,7 +21,7 @@ export class CalculateService {
 
   constructor() { }
 
-  public calculate(date) {
+  public calculate(date): IDate {
     let timeStart = new Date().getTime();
     let timeEnd = new Date(date).getTime();
     let hourDiff = timeEnd - timeStart;

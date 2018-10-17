@@ -20,4 +20,8 @@ export class StoreService {
     localStorage.setItem("data", date);
   }
 
+  public setToLastStore(lastDate: any): void {
+    localStorage.setItem("lastDate", lastDate);
+  }
+
 }

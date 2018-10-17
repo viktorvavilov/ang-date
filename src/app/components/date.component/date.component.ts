@@ -40,72 +40,40 @@ export class DateComponent implements OnInit {
   public newDate;
   public dateList = [];
   public state: string = 'hidden';
+  private timer;
 
   constructor(private calculateService: CalculateService, private storeService: StoreService) {}
 
   ngOnInit() {
-    let getDate = localStorage.getItem("data");
-    if (getDate) {
-      this.newDate = getDate;
+    this.newDate = localStorage.getItem("data");
+    if (this.newDate) {
       this.calculate(this.newDate);
       this.valueChange(this.newDate);
     }
-    this.getFromStore()
+    this.getFromStore();
   }
 
   calculate(date) {
-    let timeStart = new Date().getTime();
-    let timeEnd = new Date(date).getTime();
-    let hourDiff = timeEnd - timeStart;
-    let minDiff = hourDiff / 60 / 1000;
-    let secDiff = hourDiff / 1000;
-    let hDiff = hourDiff / 3600 / 1000;
-    let days = hDiff / 24;
-
-    this.date.days = Math.floor(days);
-    if (this.date.days > 0) {
-      this.date.hours = Math.floor(hDiff - (this.date.days * 24));
-    } else {
-    this.date.hours = Math.floor(hDiff);
-    }
-    this.date.minutes = Math.floor(minDiff - 60 * Math.floor(hDiff));
-    this.date.seconds = Math.floor(secDiff % 60);
-
-    if (this.date.seconds < 0) {
-      this.date.days = this.dateNull.days;
-      this.date.hours = this.dateNull.hours;
-      this.date.minutes = this.dateNull.minutes;
-      this.date.seconds = this.dateNull.seconds;
-      return;
-    } else {
-      
-    }
+    this.date = this.calculateService.calculate(date);
   }
 
   public valueChange (event) {
+    clearInterval(this.timer);
     this.newDate = event;
-    setInterval(() => {
-      this.calculate(this.newDate);
+    this.timer = setInterval(() => {
+      this.calculate(localStorage.getItem("data"));
     }, 1000);
-    localStorage.removeItem("data");
     localStorage.setItem("data", this.newDate);
   }
 
   public setToStore() {
     this.animate();
     this.dateList.push(this.newDate);
-    localStorage.setItem("lastDate", JSON.stringify(this.dateList));
+    this.storeService.setToLastStore(JSON.stringify(this.dateList));
   }
 
-  public getFromStore() {
+  private getFromStore() {
     this.dateList = this.storeService.getLastFromStore();
-  }
-
-  public openPopup() {
-    this.popupShown = true;
-  }
-  public closePopup() {
-    this.popupShown = false;
   }
 
   public clearStore() {
@@ -114,11 +82,23 @@ export class DateComponent implements OnInit {
     this.popupShown = false;
   }
 
+  public togglePopup() {
+    if (this.popupShown) {
+      this.popupShown = false;
+    } else {
+      this.popupShown = true;
+    }
+  }
+
   private animate() {
     this.state = (this.state === 'hidden' ? 'shown' : 'hidden');
     setTimeout(() => {
       this.state = 'hidden';
     }, 2000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.timer);
   }
 }
 

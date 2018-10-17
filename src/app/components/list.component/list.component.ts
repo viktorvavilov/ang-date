@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
   }
 
   public getFromStore() {
-    let dateList = JSON.parse(localStorage.getItem("lastDate"));
+    let dateList = this.storeService.getLastFromStore();
     if (!dateList) {
     } else {
       dateList.forEach(element => {
@@ -47,10 +47,15 @@ export class ListComponent implements OnInit {
   }
 
   public deleteDateElement(date: any) {
-    for(var i = 0; i < this.dates.length; i += 1) {
-      if(this.dates[i]['date'] === date) {
-          console.log(i);
-      }
+    this.dates = this.dates.filter(e => e.date !== date);
+    // this.storeService.setToLastStore(JSON.stringify(this.dates));
+  }
+
+  public isDateListEmpty() {
+    if (this.dates === []) {
+      return false;
+    } else {
+      return true;
     }
   }
 
