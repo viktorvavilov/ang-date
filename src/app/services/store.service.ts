@@ -7,6 +7,14 @@ export class StoreService {
 
   constructor() { }
 
+  public setToStore(date: any): void {
+    localStorage.setItem("data", date);
+  }
+
+  public setToLastStore(lastDate: any): void {
+    localStorage.setItem("lastDate", JSON.stringify(lastDate));
+  }
+
   public getLastFromStore() {
     let lastDates = JSON.parse(localStorage.getItem("lastDate"));
     if (!lastDates) {
@@ -16,12 +24,8 @@ export class StoreService {
     }
   }
 
-  public setToStore(date: any): void {
-    localStorage.setItem("data", date);
-  }
-
-  public setToLastStore(lastDate: any): void {
-    localStorage.setItem("lastDate", lastDate);
+  public clearLastStore():void {
+    localStorage.removeItem("lastDate");
   }
 
 }

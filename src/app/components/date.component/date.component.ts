@@ -50,10 +50,10 @@ export class DateComponent implements OnInit {
       this.calculate(this.newDate);
       this.valueChange(this.newDate);
     }
-    this.getFromStore();
+    this.getLastFromStore();
   }
 
-  calculate(date) {
+  private calculate(date) {
     this.date = this.calculateService.calculate(date);
   }
 
@@ -63,22 +63,22 @@ export class DateComponent implements OnInit {
     this.timer = setInterval(() => {
       this.calculate(localStorage.getItem("data"));
     }, 1000);
-    localStorage.setItem("data", this.newDate);
+    this.storeService.setToStore(this.newDate)
   }
 
   public setToStore() {
     this.animate();
     this.dateList.push(this.newDate);
-    this.storeService.setToLastStore(JSON.stringify(this.dateList));
+    this.storeService.setToLastStore(this.dateList);
   }
 
-  private getFromStore() {
+  private getLastFromStore() {
     this.dateList = this.storeService.getLastFromStore();
   }
 
   public clearStore() {
     this.dateList = [];
-    localStorage.removeItem("lastDate");
+    this.storeService.clearLastStore();
     this.popupShown = false;
   }
 

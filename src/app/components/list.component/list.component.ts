@@ -51,16 +51,16 @@ export class ListComponent implements OnInit {
     // this.storeService.setToLastStore(JSON.stringify(this.dates));
   }
 
+  public onChooseDate(date: any) {
+    this.animate();
+    this.storeService.setToStore(date);
+  }
+
   public isDateListEmpty() {
     if (this.dates === []) {
       return false;
     } else {
       return true;
     }
-  }
-
-  public onChooseDate(date: any) {
-    this.storeService.setToStore(date);
-    this.animate();
   }
 }
